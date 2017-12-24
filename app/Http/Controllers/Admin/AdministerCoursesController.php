@@ -5,14 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\AdministerUser;
-use Illuminate\Http\Request;
-use App\User;
 use App\Course;
 use App\College;
-use App\UsersCollegesAndCourses;
 
-class AdministerUsersController extends Controller
+use Illuminate\Http\Request;
+
+class AdministerCoursesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,14 +23,16 @@ class AdministerUsersController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $administerusers = User::where('name', 'LIKE', "%$keyword%")
-                ->orWhere('email', 'LIKE', "%$keyword%")
+            $administercourses = Course::where('name', 'LIKE', "%$keyword%")
+                ->orWhere('aka', 'LIKE', "%$keyword%")
+                ->orWhere('fax_id', 'LIKE', "%$keyword%")
                 ->paginate($perPage);
         } else {
-            $administerusers = User::paginate($perPage);
+            $administercourses = Course::paginate($perPage);
         }
-        
-        return view('admin.administer-users.index', compact('administerusers'));
+        $colleges = College::orderBy('name','asc')->get();
+
+        return view('admin.administer-courses.index', compact('administercourses','colleges'));
     }
 
     /**
@@ -42,10 +42,8 @@ class AdministerUsersController extends Controller
      */
     public function create()
     {
-        $colleges = College::orderBy('name', 'asc')->get();
-        $courses = Course::orderBy('name', 'asc')->get();        
-        
-        return view('admin.administer-users.create',compact('colleges','courses'));
+        $colleges = College::orderBy('name','asc')->get();
+        return view('admin.administer-courses.create',compact('colleges'));
     }
 
     /**
@@ -59,11 +57,10 @@ class AdministerUsersController extends Controller
     {
         
         $requestData = $request->all();
+        
+        Course::create($requestData);
 
-        //AdministerUser::create($requestData);
-        User::create($requestData);
-        UsersCollegesAndCourses::create($requestData);
-        return redirect('admin/administer-users')->with('flash_message', 'AdministerUser added!');
+        return redirect('admin/administer-courses')->with('flash_message', 'AdministerCourse added!');
     }
 
     /**
@@ -75,9 +72,9 @@ class AdministerUsersController extends Controller
      */
     public function show($id)
     {
-        //$administeruser = AdministerUser::findOrFail($id);
-        $administeruser = User::findOrFail($id);
-        return view('admin.administer-users.show', compact('administeruser'));
+        $administercourse = Course::findOrFail($id);
+
+        return view('admin.administer-courses.show', compact('administercourse'));
     }
 
     /**
@@ -89,11 +86,9 @@ class AdministerUsersController extends Controller
      */
     public function edit($id)
     {
-        //$administeruser = AdministerUser::findOrFail($id);
-        $administeruser = User::findOrFail($id);
-        $colleges = College::orderBy('name', 'asc')->get();  
-        $courses = Course::orderBy('name', 'asc')->get();      
-        return view('admin.administer-users.edit', compact('administeruser','colleges','courses'));
+        $administercourse = Course::findOrFail($id);
+        $colleges = College::orderBy('name','asc')->get();
+        return view('admin.administer-courses.edit', compact('administercourse','colleges'));
     }
 
     /**
@@ -109,11 +104,10 @@ class AdministerUsersController extends Controller
         
         $requestData = $request->all();
         
-        //$administeruser = AdministerUser::findOrFail($id);
-        $administeruser = User::findOrFail($id);
-        $administeruser->update($requestData);
-        
-        return redirect('admin/administer-users')->with('flash_message', 'AdministerUser updated!');
+        $administercourse = Course::findOrFail($id);
+        $administercourse->update($requestData);
+
+        return redirect('admin/administer-courses')->with('flash_message', 'AdministerCourse updated!');
     }
 
     /**
@@ -125,9 +119,8 @@ class AdministerUsersController extends Controller
      */
     public function destroy($id)
     {
-        //AdministerUser::destroy($id);
-        User::destroy($id);
+        Course::destroy($id);
 
-        return redirect('admin/administer-users')->with('flash_message', 'AdministerUser deleted!');
+        return redirect('admin/administer-courses')->with('flash_message', 'AdministerCourse deleted!');
     }
 }

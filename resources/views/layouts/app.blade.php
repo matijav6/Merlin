@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Merlin') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -37,7 +37,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        Merlin
                     </a>
                 </div>
 
@@ -49,17 +49,50 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+
+                    @if(Auth::user())
+                            @if(Auth::user()->is_admin)
+                        <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                   Admin <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{ url('/admin/administer-users') }}" >                                           
+                                        Users
+                                        </a>                                       
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('/admin/administer-colleges') }}"     >                                       
+                                            Colleges
+                                        </a>                                       
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('/admin/administer-courses') }}">                                            
+                                            Courses
+                                        </a>                                       
+                                    </li>
+                                </ul>
+                            </li>
+                            @endif
+                        @endif
+
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">Login</a></li>
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
+                        <li><a href="{{ url('/instructions') }}">Instructions</a></li>
+                        <li><a href="{{ url('/news') }}">News</a></li>
+                        <li><a href="{{ url('/materials') }}">Materials</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/profile') }}">My profile</a></li>
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
@@ -74,6 +107,7 @@
                                 </ul>
                             </li>
                         @endif
+                        
                     </ul>
                 </div>
             </div>
