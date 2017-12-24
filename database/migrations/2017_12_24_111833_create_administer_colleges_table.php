@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateAdministerUsersTable extends Migration
+class CreateAdministerCollegesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,12 @@ class CreateAdministerUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('administer_users', function (Blueprint $table) {
+        Schema::create('administer_colleges', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->string('name')->nullable();
-            $table->string('email')->nullable();
-            $table->string('password')->nullable();
-            $table->string('category')->nullable();
+            $table->string('aka')->nullable();
+            $table->string('county_id')->nullable();
             });
     }
 
@@ -29,6 +28,6 @@ class CreateAdministerUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('administer_users');
+        Schema::drop('administer_colleges');
     }
 }

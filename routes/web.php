@@ -28,3 +28,4 @@ Route::group(['middleware' => ['auth']], function () {
 
 });
 Route::resource('admin/administer-users', 'Admin\\AdministerUsersController');
+Route::resource('admin/administer-colleges', 'Admin\\AdministerCollegesController');
