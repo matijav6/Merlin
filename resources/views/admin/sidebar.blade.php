@@ -8,13 +8,13 @@
             <ul class="nav" role="tablist">
                 <li role="presentation">
                     <a href="{{ url('/news') }}">
-                        News
+                       My news
                     </a>
                     <a href="{{ url('/instructions') }}">
-                        Instructions
+                        My instructions
                     </a>
                     <a href="{{ url('/materials') }}">
-                        Materials
+                        My materials
                     </a>
                 </li>
             </ul>

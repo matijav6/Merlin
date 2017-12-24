@@ -60,8 +60,12 @@ class AdministerUsersController extends Controller
         
         $requestData = $request->all();
 
-        //AdministerUser::create($requestData);
-        User::create($requestData);
+        User::create([
+            'name' => $requestData['name'],
+            'email' => $requestData['email'],
+            'password' => bcrypt($requestData['password']),
+        ]);
+        
         UsersCollegesAndCourses::create($requestData);
         return redirect('admin/administer-users')->with('flash_message', 'AdministerUser added!');
     }

@@ -18,8 +18,6 @@ Route::get('/', function () {
 
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::group(['middleware' => ['auth']], function () {
     
 Route::resource('/instructions', 'Instructions\\InstructionsController');
 Route::resource('/news', 'News\\NewsController');
@@ -27,6 +25,9 @@ Route::resource('/materials', 'Materials\\MaterialsController');
 Auth::routes();
 Route::resource('admin/administer-users', 'Admin\\AdministerUsersController');
 Route::resource('admin/administer-colleges', 'Admin\\AdministerCollegesController');
-});
-
 Route::resource('admin/administer-courses', 'Admin\\AdministerCoursesController');
+Route::resource('profile', 'ProfileController');
+
+Route::group(['middleware' => ['auth']], function () {
+
+});
