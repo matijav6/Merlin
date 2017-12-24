@@ -27,3 +27,4 @@ Route::group(['middleware' => ['auth']], function () {
     
 
 });
+Route::resource('admin/administer-users', 'Admin\\AdministerUsersController');

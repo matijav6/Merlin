@@ -13,11 +13,12 @@ class CreateUsersAndCollegesTable extends Migration
      */
     public function up()
     {
-        Schema::create('UsersAndColleges', function (Blueprint $table) {
+        Schema::create('UsersCollegesAndCourses', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->integer('user_id');
             $table->integer('fax_id');
+            $table->integer('course_id');
         });
     }
 
@@ -28,6 +29,6 @@ class CreateUsersAndCollegesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('UsersAndColleges');
+        Schema::dropIfExists('UsersCollegesAndCourses');
     }
 }
