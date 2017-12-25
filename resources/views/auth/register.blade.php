@@ -60,6 +60,30 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+                        
+                        <div class="form-group {{ $errors->has('colleges') ? 'has-error' : ''}}">
+                            <label for="colleges" class="col-md-4 control-label">{{ 'Colleges' }}</label>
+                            <div class="col-md-6">
+                                <select name="fax_id" class="form-control" id="fax_id" >
+                                    @foreach ($colleges as $college)
+                                    <option value="{{ $college->id }}">{{ $college->name }}</option>
+                                    @endforeach
+                                 </select>
+                                {!! $errors->first('college', '<p class="help-block">:message</p>') !!}
+                            </div>
+                        </div>
+
+                        <div class="form-group {{ $errors->has('course_id') ? 'has-error' : ''}}">
+                            <label for="course_id" class="col-md-4 control-label">{{ 'Course' }}</label>
+                            <div class="col-md-6">
+                                <select name="course_id" class="form-control" id="course_id" >
+                                    @foreach ($courses as $course)
+                                    <option value="{{ $course->id }}">{{ $course->name }}</option>
+                                    @endforeach
+                                 </select>
+                                {!! $errors->first('college', '<p class="help-block">:message</p>') !!}
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

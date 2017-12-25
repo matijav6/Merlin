@@ -14,7 +14,7 @@
         <style>
             html, body {
                 background-color: #fff;
-                color: #636b6f;
+                color: #ffff;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
                 height: 100vh;
@@ -28,7 +28,9 @@
             .flex-center {
                 align-items: center;
                 display: flex;
-                justify-content: center;
+                justify-content: center;                
+                background-image: url("https://stanfordcomparativeadvantage.files.wordpress.com/2017/06/mccarey_2017.jpeg");
+                background-size: 100%;
             }
 
             .position-ref {
@@ -50,7 +52,7 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: #ffff;
                 padding: 0 25px;
                 font-size: 12px;
                 font-weight: 600;
@@ -83,11 +85,9 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <div class="title m-b-m"  style="font-size:2.5em;">
+                        The wizard for students   
+                    </div>
                 </div>
             </div>
         </div>

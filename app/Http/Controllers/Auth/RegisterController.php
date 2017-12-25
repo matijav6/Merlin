@@ -3,6 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\College;
+use App\Course;
+use App\UsersCollegesAndCourses;
+use Auth;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -21,6 +26,19 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        $colleges = College::orderBy('name','asc')->get();
+        $courses = Course::orderBy('name','asc')->get();
+        return view('auth.register', compact('colleges','courses'));
+    }
 
     /**
      * Where to redirect users after registration.
@@ -62,10 +80,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+        $users = User::orderBy('id','asc')->get();
+        foreach($users as $user)
+            $id = $user->id;
+
+        UsersCollegesAndCourses::create([
+        'user_id' => $id,
+        'fax_id' => $data['fax_id'],
+        'course_id' => $data['course_id'],
+       ]);
+        return User::findOrFail($id);
+
     }
 }
