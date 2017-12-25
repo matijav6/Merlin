@@ -6,9 +6,9 @@
 
         <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Create New User</div>
+                    <div class="panel-heading">Edit College: {{ $administercollege->name }}</div>
                     <div class="panel-body">
-                        <a href="{{ url('/admin/administer-users') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/colleges') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
                         <br />
 
@@ -20,10 +20,11 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/admin/administer-users') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('/admin/colleges/' . $administercollege->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                            {{ method_field('PATCH') }}
                             {{ csrf_field() }}
 
-                            @include ('admin.administer-users.form', ['disable' =>'false'])
+                            @include ('admin.colleges.form', ['submitButtonText' => 'Update', $countys])
 
                         </form>
 

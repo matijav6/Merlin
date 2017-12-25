@@ -32,7 +32,7 @@ class AdministerCoursesController extends Controller
         }
         $colleges = College::orderBy('name','asc')->get();
 
-        return view('admin.administer-courses.index', compact('administercourses','colleges'));
+        return view('admin.courses.index', compact('administercourses','colleges'));
     }
 
     /**
@@ -43,7 +43,7 @@ class AdministerCoursesController extends Controller
     public function create()
     {
         $colleges = College::orderBy('name','asc')->get();
-        return view('admin.administer-courses.create',compact('colleges'));
+        return view('admin.courses.create',compact('colleges'));
     }
 
     /**
@@ -60,7 +60,7 @@ class AdministerCoursesController extends Controller
         
         Course::create($requestData);
 
-        return redirect('admin/administer-courses')->with('flash_message', 'Course added!');
+        return redirect('admin/courses')->with('flash_message', 'Course added!');
     }
 
     /**
@@ -74,7 +74,7 @@ class AdministerCoursesController extends Controller
     {
         $administercourse = Course::findOrFail($id);
 
-        return view('admin.administer-courses.show', compact('administercourse'));
+        return view('admin.courses.show', compact('administercourse'));
     }
 
     /**
@@ -88,7 +88,7 @@ class AdministerCoursesController extends Controller
     {
         $administercourse = Course::findOrFail($id);
         $colleges = College::orderBy('name','asc')->get();
-        return view('admin.administer-courses.edit', compact('administercourse','colleges'));
+        return view('admin.courses.edit', compact('administercourse','colleges'));
     }
 
     /**
@@ -107,7 +107,7 @@ class AdministerCoursesController extends Controller
         $administercourse = Course::findOrFail($id);
         $administercourse->update($requestData);
 
-        return redirect('admin/administer-courses')->with('flash_message', 'Course updated!');
+        return redirect('admin/courses')->with('flash_message', 'Course updated!');
     }
 
     /**
@@ -121,6 +121,6 @@ class AdministerCoursesController extends Controller
     {
         Course::destroy($id);
 
-        return redirect('admin/administer-courses')->with('flash_message', 'Course deleted!');
+        return redirect('admin/courses')->with('flash_message', 'Course deleted!');
     }
 }

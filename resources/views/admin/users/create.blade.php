@@ -6,9 +6,9 @@
 
         <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Create New Course</div>
+                    <div class="panel-heading">Create New User</div>
                     <div class="panel-body">
-                        <a href="{{ url('/admin/administer-courses') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/users') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
                         <br />
 
@@ -20,10 +20,10 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/admin/administer-courses') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('/admin/users') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
-                            @include ('admin.administer-courses.form', $colleges)
+                            @include ('admin.users.form', ['disable' =>'false'])
 
                         </form>
 

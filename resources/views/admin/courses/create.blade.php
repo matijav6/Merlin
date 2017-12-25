@@ -6,9 +6,9 @@
 
         <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Edit User: {{ $administeruser->name }}</div>
+                    <div class="panel-heading">Create New Course</div>
                     <div class="panel-body">
-                        <a href="{{ url('/admin/administer-users') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/courses') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
                         <br />
 
@@ -20,11 +20,10 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/admin/administer-users/' . $administeruser->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
+                        <form method="POST" action="{{ url('/admin/courses') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
-                            @include ('admin.administer-users.form', ['submitButtonText' => 'Update','disable' =>'true', $colleges, $courses])
+                            @include ('admin.courses.form', $colleges)
 
                         </form>
 

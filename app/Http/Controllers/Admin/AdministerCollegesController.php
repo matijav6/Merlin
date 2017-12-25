@@ -32,7 +32,7 @@ class AdministerCollegesController extends Controller
         }
 
         $countys = County::orderBy('name','asc')->get();
-        return view('admin.administer-colleges.index', compact('administercolleges','countys'));
+        return view('admin.colleges.index', compact('administercolleges','countys'));
     }
 
     /**
@@ -43,7 +43,7 @@ class AdministerCollegesController extends Controller
     public function create()
     {
         $countys = County::orderBy('name','asc')->get();
-        return view('admin.administer-colleges.create',compact('countys'));
+        return view('admin.colleges.create',compact('countys'));
     }
 
     /**
@@ -60,7 +60,7 @@ class AdministerCollegesController extends Controller
         
         College::create($requestData);
 
-        return redirect('admin/administer-colleges')->with('flash_message', 'College added!');
+        return redirect('admin/colleges')->with('flash_message', 'College added!');
     }
 
     /**
@@ -74,7 +74,7 @@ class AdministerCollegesController extends Controller
     {
         $administercollege = College::findOrFail($id);
 
-        return view('admin.administer-colleges.show', compact('administercollege'));
+        return view('admin.colleges.show', compact('administercollege'));
     }
 
     /**
@@ -88,7 +88,7 @@ class AdministerCollegesController extends Controller
     {
         $administercollege = College::findOrFail($id);
         $countys = County::orderBy('name','asc')->get();
-        return view('admin.administer-colleges.edit', compact('administercollege','countys'));
+        return view('admin.colleges.edit', compact('administercollege','countys'));
     }
 
     /**
@@ -107,7 +107,7 @@ class AdministerCollegesController extends Controller
         $administercollege = College::findOrFail($id);
         $administercollege->update($requestData);
 
-        return redirect('admin/administer-colleges')->with('flash_message', 'College updated!');
+        return redirect('admin/colleges')->with('flash_message', 'College updated!');
     }
 
     /**
@@ -121,6 +121,6 @@ class AdministerCollegesController extends Controller
     {
         College::destroy($id);
 
-        return redirect('admin/administer-colleges')->with('flash_message', 'College deleted!');
+        return redirect('admin/colleges')->with('flash_message', 'College deleted!');
     }
 }

@@ -9,8 +9,8 @@
                     <div class="panel-heading">Course {{ $administercourse->id }}</div>
                     <div class="panel-body">
 
-                        <a href="{{ url('/admin/administer-courses') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/admin/administer-courses/' . $administercourse->id . '/edit') }}" title="Edit AdministerCourse"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                        <a href="{{ url('/admin/courses') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/courses/' . $administercourse->id . '/edit') }}" title="Edit AdministerCourse"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                         <form method="POST" action="{{ url('admin/administercourses' . '/' . $administercourse->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}

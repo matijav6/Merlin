@@ -41,11 +41,18 @@
                         Merlin
                     </p>
                 </div>
-
+                
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
+                    </ul>
+                    
+                    <!-- Left Side Of Navbar -->
+                    <ul class="nav navbar-nav">
+                        <a href="{{ url('/news') }}" >                                           
+                                            Users
+                        </a>  
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -60,17 +67,17 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ url('/admin/administer-users') }}" >                                           
+                                        <a href="{{ url('/admin/users') }}" >                                           
                                         Users
                                         </a>                                       
                                     </li>
                                     <li>
-                                        <a href="{{ url('/admin/administer-colleges') }}"     >                                       
+                                        <a href="{{ url('/admin/colleges') }}"     >                                       
                                             Colleges
                                         </a>                                       
                                     </li>
                                     <li>
-                                        <a href="{{ url('/admin/administer-courses') }}">                                            
+                                        <a href="{{ url('/admin/courses') }}">                                            
                                             Courses
                                         </a>                                       
                                     </li>

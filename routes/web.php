@@ -43,9 +43,9 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('profile', 'ProfileController');
 
-    Route::resource('admin/administer-users', 'Admin\\AdministerUsersController');
-    Route::resource('admin/administer-colleges', 'Admin\\AdministerCollegesController');
-    Route::resource('admin/administer-courses', 'Admin\\AdministerCoursesController');
+    Route::resource('admin/users', 'Admin\\AdministerUsersController');
+    Route::resource('admin/colleges', 'Admin\\AdministerCollegesController');
+    Route::resource('admin/courses', 'Admin\\AdministerCoursesController');
 
 
 });

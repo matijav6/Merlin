@@ -8,7 +8,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Edit Course: {{ $administercourse->name }}</div>
                     <div class="panel-body">
-                        <a href="{{ url('/admin/administer-courses') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/courses') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
                         <br />
 
@@ -20,11 +20,11 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/admin/administer-courses/' . $administercourse->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('/admin/courses/' . $administercourse->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             {{ csrf_field() }}
 
-                            @include ('admin.administer-courses.form', ['submitButtonText' => 'Update', $colleges])
+                            @include ('admin.courses.form', ['submitButtonText' => 'Update', $colleges])
 
                         </form>
 

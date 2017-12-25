@@ -9,8 +9,8 @@
                     <div class="panel-heading">User {{ $administeruser->id }}</div>
                     <div class="panel-body">
 
-                        <a href="{{ url('/admin/administer-users') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/admin/administer-users/' . $administeruser->id . '/edit') }}" title="Edit AdministerUser"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                        <a href="{{ url('/admin/users') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/users/' . $administeruser->id . '/edit') }}" title="Edit AdministerUser"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                         <form method="POST" action="{{ url('admin/administerusers' . '/' . $administeruser->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}

@@ -32,7 +32,7 @@ class AdministerUsersController extends Controller
             $administerusers = User::paginate($perPage);
         }
         
-        return view('admin.administer-users.index', compact('administerusers'));
+        return view('admin.users.index', compact('administerusers'));
     }
 
     /**
@@ -45,7 +45,7 @@ class AdministerUsersController extends Controller
         $colleges = College::orderBy('name', 'asc')->get();
         $courses = Course::orderBy('name', 'asc')->get();        
         
-        return view('admin.administer-users.create',compact('colleges','courses'));
+        return view('admin.users.create',compact('colleges','courses'));
     }
 
     /**
@@ -76,7 +76,7 @@ class AdministerUsersController extends Controller
             'course_id' => $requestData['course_id'],
         ]);
 
-        return redirect('admin/administer-users')->with('flash_message', 'User added!');
+        return redirect('admin/users')->with('flash_message', 'User added!');
     }
 
     /**
@@ -90,7 +90,7 @@ class AdministerUsersController extends Controller
     {
         //$administeruser = AdministerUser::findOrFail($id);
         $administeruser = User::findOrFail($id);
-        return view('admin.administer-users.show', compact('administeruser'));
+        return view('admin.users.show', compact('administeruser'));
     }
 
     /**
@@ -106,7 +106,7 @@ class AdministerUsersController extends Controller
         $administeruser = User::findOrFail($id);
         $colleges = College::orderBy('name', 'asc')->get();  
         $courses = Course::orderBy('name', 'asc')->get();      
-        return view('admin.administer-users.edit', compact('administeruser','colleges','courses'));
+        return view('admin.users.edit', compact('administeruser','colleges','courses'));
     }
 
     /**
@@ -131,7 +131,7 @@ class AdministerUsersController extends Controller
             'email' => $requestData['email'],
             'password' => bcrypt($requestData['password']),
         ]);
-        return redirect('admin/administer-users')->with('flash_message', 'User updated!');
+        return redirect('admin/users')->with('flash_message', 'User updated!');
     }
 
     /**
@@ -152,6 +152,6 @@ class AdministerUsersController extends Controller
             $var = $del->id;
         }
         UsersCollegesAndCourses::destroy($var);
-        return redirect('admin/administer-users')->with('flash_message', 'User deleted!');
+        return redirect('admin/users')->with('flash_message', 'User deleted!');
     }
 }

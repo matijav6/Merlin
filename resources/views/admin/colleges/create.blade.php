@@ -3,12 +3,12 @@
 @section('content')
     <div class="container">
         <div class="row">
-
+    
         <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Edit College: {{ $administercollege->name }}</div>
+                    <div class="panel-heading">Create New College</div>
                     <div class="panel-body">
-                        <a href="{{ url('/admin/administer-colleges') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/colleges') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
                         <br />
 
@@ -20,11 +20,10 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/admin/administer-colleges/' . $administercollege->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
+                        <form method="POST" action="{{ url('/admin/colleges') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
-                            @include ('admin.administer-colleges.form', ['submitButtonText' => 'Update', $countys])
+                            @include ('admin.colleges.form',$countys)
 
                         </form>
 
