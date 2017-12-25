@@ -56,7 +56,17 @@ class ProfileController extends Controller
     {
         
         $requestData = $request->all();        
-        UsersCollegesAndCourses::create($requestData);
+        $data = UsersCollegesAndCourses::where('user_id' ,'=', Auth::user()->id)->get();
+        $i = 0;
+        foreach($data as $check){
+            if($check->fax_id == $requestData['fax_id'] && $check->course_id == $requestData['course_id'])
+            {
+                return redirect('profile/create')->with('flash_message', 'Already exists!');
+                $i++;
+            }
+        }
+        if($i == 0)
+            UsersCollegesAndCourses::create($requestData);
 
         return redirect('profile')->with('flash_message', 'Profile added!');
     }

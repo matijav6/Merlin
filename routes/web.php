@@ -39,11 +39,13 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 //*********************************************** */
-Route::resource('admin/administer-users', 'Admin\\AdministerUsersController');
-Route::resource('admin/administer-colleges', 'Admin\\AdministerCollegesController');
-Route::resource('admin/administer-courses', 'Admin\\AdministerCoursesController');
-
 
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('profile', 'ProfileController');
+
+    Route::resource('admin/administer-users', 'Admin\\AdministerUsersController');
+    Route::resource('admin/administer-colleges', 'Admin\\AdministerCollegesController');
+    Route::resource('admin/administer-courses', 'Admin\\AdministerCoursesController');
+
+
 });
