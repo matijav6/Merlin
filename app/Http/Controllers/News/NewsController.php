@@ -8,7 +8,7 @@ use DB;
 
 use App\News;
 use App\Course;
-
+use Auth;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -28,7 +28,7 @@ class NewsController extends Controller
                 ->orWhere('content', 'LIKE', "%$keyword%")
                 ->paginate($perPage);
         } else {
-            $news = News::paginate($perPage);
+            $news = News::where('user_id','=',Auth::user()->id)->paginate();
         }
 
         $courses = Course::orderBy('id', 'desc')->get();     

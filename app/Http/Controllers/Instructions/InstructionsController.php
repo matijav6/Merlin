@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Course;
 use App\Instruction;
+use Auth;
 use Illuminate\Http\Request;
 
 class InstructionsController extends Controller
@@ -26,7 +27,7 @@ class InstructionsController extends Controller
                 ->orWhere('content', 'LIKE', "%$keyword%")
                 ->paginate($perPage);
         } else {
-            $instructions = Instruction::paginate($perPage);
+            $instructions = Instruction::where('user_id','=',Auth::user()->id)->paginate();
         }
 
         $courses = Course::orderBy('id', 'desc')->get();

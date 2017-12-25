@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Material;
 use App\Course;
+use Auth;
 use Illuminate\Http\Request;
 
 class MaterialsController extends Controller
@@ -26,7 +27,7 @@ class MaterialsController extends Controller
                 ->orWhere('content', 'LIKE', "%$keyword%")
                 ->paginate($perPage);
         } else {
-            $materials = Material::paginate($perPage);
+            $materials = Material::where('user_id','=',Auth::user()->id)->paginate();
         }
         $courses = Course::orderBy('id', 'desc')->get();     
         return view('materials.materials.index', compact('materials','courses'));
