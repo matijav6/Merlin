@@ -42,14 +42,14 @@
                     </p>
                 </div>
                 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <div class="collapse navbar-collapse row" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav col-md-4">
+                    <ul class="nav navbar-nav col-md-3">
                         &nbsp;
                     </ul>
                     
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav main-menu col-md-4">
+                    <ul class="nav navbar-nav main-menu col-md-5">
                         @if(Auth::user())
                         <li> <a href="{{ url('/news') }}" >                                           
                                 News
@@ -111,9 +111,9 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ url('/profile') }}">My profile</a></li>
-                                <li><a href="{{ url('/instructions') }}">Instructions</a></li>
-                        <li><a href="{{ url('/news') }}">News</a></li>
-                        <li><a href="{{ url('/materials') }}">Materials</a></li>
+                                <li><a href="{{ url('/instructions') }}">My Instructions</a></li>
+                        <li><a href="{{ url('/news') }}">My News</a></li>
+                        <li><a href="{{ url('/materials') }}">My Materials</a></li>
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();

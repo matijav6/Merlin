@@ -45,6 +45,9 @@
 
             .content {
                 text-align: center;
+                background: #88898a60;
+                border-radius: 30px;
+                padding: 20px;
             }
 
             .title {

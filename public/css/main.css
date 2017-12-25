@@ -1,6 +1,7 @@
 body{
     background-image: url(https://stanfordcomparativeadvantage.files.wordpress.com/2017/06/mccarey_2017.jpeg);
     background-size: 100%;
+    background-repeat: no-repeat;
 }
 .home{
     font-size: 1.5em;
