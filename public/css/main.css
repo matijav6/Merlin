@@ -1,0 +1,11 @@
+body{
+    background-image: url(https://stanfordcomparativeadvantage.files.wordpress.com/2017/06/mccarey_2017.jpeg);
+    background-size: 100%;
+}
+.home{
+    font-size: 1.5em;
+}
+.navbar, .navbar-default, .navbar-static-top{
+    border: 0px solid;
+    box-shadow: inset 0px -3px 8px 0px #888888;
+}

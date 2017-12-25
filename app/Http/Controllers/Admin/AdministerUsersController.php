@@ -131,7 +131,7 @@ class AdministerUsersController extends Controller
             'email' => $requestData['email'],
             'password' => bcrypt($requestData['password']),
         ]);
-        return redirect('admin/administer-users')->with('flash_message', 'AdministerUser updated!');
+        return redirect('admin/administer-users')->with('flash_message', 'User updated!');
     }
 
     /**
@@ -146,6 +146,12 @@ class AdministerUsersController extends Controller
         //AdministerUser::destroy($id);
         User::destroy($id);
 
-        return redirect('admin/administer-users')->with('flash_message', 'AdministerUser deleted!');
+        $delete = UsersCollegesAndCourses::where('user_id','=',$id)->get();
+        
+        foreach($delete as $del){           
+            $var = $del->id;
+        }
+        UsersCollegesAndCourses::destroy($var);
+        return redirect('admin/administer-users')->with('flash_message', 'User deleted!');
     }
 }

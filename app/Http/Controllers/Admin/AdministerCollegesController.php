@@ -60,7 +60,7 @@ class AdministerCollegesController extends Controller
         
         College::create($requestData);
 
-        return redirect('admin/administer-colleges')->with('flash_message', 'AdministerCollege added!');
+        return redirect('admin/administer-colleges')->with('flash_message', 'College added!');
     }
 
     /**
@@ -107,7 +107,7 @@ class AdministerCollegesController extends Controller
         $administercollege = College::findOrFail($id);
         $administercollege->update($requestData);
 
-        return redirect('admin/administer-colleges')->with('flash_message', 'AdministerCollege updated!');
+        return redirect('admin/administer-colleges')->with('flash_message', 'College updated!');
     }
 
     /**
@@ -121,6 +121,6 @@ class AdministerCollegesController extends Controller
     {
         College::destroy($id);
 
-        return redirect('admin/administer-colleges')->with('flash_message', 'AdministerCollege deleted!');
+        return redirect('admin/administer-colleges')->with('flash_message', 'College deleted!');
     }
 }

@@ -29,15 +29,14 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Name</th><th>A.K.A</th><th>College</th><th>Actions</th>
+                                        <th>Name</th><th>A.K.A</th><th>College</th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($administercourses as $item)
                                 @foreach($colleges as $college)
                                 @if($college->id == $item->fax_id)
-                                    <tr>
-                                        <td>{{ $loop->iteration or $item->id }}</td>
+                                    <tr>                                    
                                         <td>{{ $item->name }}</td><td>{{ $item->aka }}</td><td>{{ $college->name }}</td>
                                         <td>                                            
                                             <a href="{{ url('/admin/administer-courses/' . $item->id . '/edit') }}" title="Edit AdministerCourse"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

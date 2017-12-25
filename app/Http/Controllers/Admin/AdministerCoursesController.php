@@ -60,7 +60,7 @@ class AdministerCoursesController extends Controller
         
         Course::create($requestData);
 
-        return redirect('admin/administer-courses')->with('flash_message', 'AdministerCourse added!');
+        return redirect('admin/administer-courses')->with('flash_message', 'Course added!');
     }
 
     /**
@@ -107,7 +107,7 @@ class AdministerCoursesController extends Controller
         $administercourse = Course::findOrFail($id);
         $administercourse->update($requestData);
 
-        return redirect('admin/administer-courses')->with('flash_message', 'AdministerCourse updated!');
+        return redirect('admin/administer-courses')->with('flash_message', 'Course updated!');
     }
 
     /**
@@ -121,6 +121,6 @@ class AdministerCoursesController extends Controller
     {
         Course::destroy($id);
 
-        return redirect('admin/administer-courses')->with('flash_message', 'AdministerCourse deleted!');
+        return redirect('admin/administer-courses')->with('flash_message', 'Course deleted!');
     }
 }
