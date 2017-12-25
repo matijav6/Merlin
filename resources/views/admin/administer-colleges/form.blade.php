@@ -5,7 +5,7 @@
         {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
     </div>
 </div><div class="form-group {{ $errors->has('aka') ? 'has-error' : ''}}">
-    <label for="aka" class="col-md-4 control-label">{{ 'Aka' }}</label>
+    <label for="aka" class="col-md-4 control-label">{{ 'A.K.A' }}</label>
     <div class="col-md-6">
         <input class="form-control" name="aka" type="text" id="aka" value="{{ $administercollege->aka or ''}}" >
         {!! $errors->first('aka', '<p class="help-block">:message</p>') !!}
