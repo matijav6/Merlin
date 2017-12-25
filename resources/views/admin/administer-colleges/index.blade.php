@@ -7,7 +7,7 @@
 
             <div class="col-md-9">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Administercolleges</div>
+                    <div class="panel-heading">Colleges</div>
                     <div class="panel-body">
                         <a href="{{ url('/admin/administer-colleges/create') }}" class="btn btn-success btn-sm" title="Add New AdministerCollege">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New

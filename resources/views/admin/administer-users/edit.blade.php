@@ -7,7 +7,7 @@
 
             <div class="col-md-9">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Edit AdministerUser #{{ $administeruser->id }}</div>
+                    <div class="panel-heading">Edit User: {{ $administeruser->name }}</div>
                     <div class="panel-body">
                         <a href="{{ url('/admin/administer-users') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
@@ -25,7 +25,7 @@
                             {{ method_field('PATCH') }}
                             {{ csrf_field() }}
 
-                            @include ('admin.administer-users.form', ['submitButtonText' => 'Update', $colleges, $courses])
+                            @include ('admin.administer-users.form', ['submitButtonText' => 'Update','disable' =>'true', $colleges, $courses])
 
                         </form>
 

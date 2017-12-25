@@ -59,15 +59,24 @@ class AdministerUsersController extends Controller
     {
         
         $requestData = $request->all();
-
-        User::create([
+        $lastID = User::orderBy('id', 'asc')->get();
+        foreach($lastID as $ID){
+            $zadnjiID = $ID->id;
+        }
+        $zadnjiID++;
+         User::create([
             'name' => $requestData['name'],
             'email' => $requestData['email'],
             'password' => bcrypt($requestData['password']),
         ]);
         
-        UsersCollegesAndCourses::create($requestData);
-        return redirect('admin/administer-users')->with('flash_message', 'AdministerUser added!');
+        UsersCollegesAndCourses::create([
+            'user_id' => $zadnjiID,
+            'fax_id' => $requestData['fax_id'],
+            'course_id' => $requestData['course_id'],
+        ]);
+
+        return redirect('admin/administer-users')->with('flash_message', 'User added!');
     }
 
     /**
@@ -115,8 +124,13 @@ class AdministerUsersController extends Controller
         
         //$administeruser = AdministerUser::findOrFail($id);
         $administeruser = User::findOrFail($id);
-        $administeruser->update($requestData);
+        //$administeruser->update($requestData);
         
+        $administeruser->update([
+            'name' => $requestData['name'],
+            'email' => $requestData['email'],
+            'password' => bcrypt($requestData['password']),
+        ]);
         return redirect('admin/administer-users')->with('flash_message', 'AdministerUser updated!');
     }
 

@@ -39,7 +39,10 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        return view('profile.create');
+        $colleges = College::orderBy('name','asc')->get();
+        $courses = Course::orderBy('name','asc')->get();
+
+        return view('profile.create',compact('colleges','courses'));
     }
 
     /**
@@ -52,9 +55,8 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         
-        $requestData = $request->all();
-        
-        Profile::create($requestData);
+        $requestData = $request->all();        
+        UsersCollegesAndCourses::create($requestData);
 
         return redirect('profile')->with('flash_message', 'Profile added!');
     }
@@ -83,8 +85,11 @@ class ProfileController extends Controller
     public function edit($id)
     {
         $profile = User::findOrFail($id);
-
-        return view('profile.edit', compact('profile'));
+        $all = UsersCollegesAndCourses::where('user_id', '=', $profile->id)->get();       
+        
+        //$course = Course::findOrFail($course_id);        
+        //$college = College::findOrFail($college_id);        
+       // return view('profile.edit',  compact('profile','college','course'));
     }
 
     /**
@@ -115,8 +120,14 @@ class ProfileController extends Controller
      */
     public function destroy($id)
     {
-        User::destroy($id);
+        $userID = Auth::user()->id;
 
+        $delete = UsersCollegesAndCourses::orderBy('id','asc')->get();
+        foreach($delete as $del){
+            if($del->course_id = $id AND $del->user_id = $userID)
+                $var = $del->id;
+        }
+        UsersCollegesAndCourses::destroy($var);
         return redirect('profile')->with('flash_message', 'Profile deleted!');
     }
 }

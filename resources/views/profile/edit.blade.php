@@ -25,7 +25,7 @@
                             {{ method_field('PATCH') }}
                             {{ csrf_field() }}
 
-                            @include ('profile.form', ['submitButtonText' => 'Update'])
+                            @include ('profile.form', ['submitButtonText' => 'Update', $course, $college])
 
                         </form>
 

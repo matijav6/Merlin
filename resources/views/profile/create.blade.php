@@ -24,7 +24,7 @@
                         <form method="POST" action="{{ url('/profile') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
-                            @include ('profile.form')
+                            @include ('profile.form', [$colleges, $courses])
 
                         </form>
 

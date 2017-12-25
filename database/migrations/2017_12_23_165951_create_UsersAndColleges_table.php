@@ -16,9 +16,9 @@ class CreateUsersAndCollegesTable extends Migration
         Schema::create('UsersCollegesAndCourses', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('user_id');
-            $table->integer('fax_id');
-            $table->integer('course_id');
+            $table->string('user_id');
+            $table->string('fax_id');
+            $table->string('course_id');
         });
     }
 

@@ -7,7 +7,7 @@
 
             <div class="col-md-9">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Create New AdministerCourse</div>
+                    <div class="panel-heading">Create New Course</div>
                     <div class="panel-body">
                         <a href="{{ url('/admin/administer-courses') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />

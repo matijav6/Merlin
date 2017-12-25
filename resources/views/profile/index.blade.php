@@ -8,11 +8,10 @@
             <div class="col-md-9">
                 <div class="panel panel-default">
                     <div class="panel-heading">Profile</div>
-                    <div class="panel-body">  
-                    <a href="{{ url('/news/create') }}" class="btn btn-success btn-sm" title="Add New News">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
-                        </a>
-                                           
+                    <div class="panel-body">    
+                    <a href="{{ url('/profile/create') }}" class="btn btn-success btn-sm" title="Add New Material">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Add
+                        </a>                                
                         <br/>
                         <br/>
                         <div class="table-responsive">
@@ -30,10 +29,8 @@
                                 @if($course->fax_id == $college->id)
                                     <tr>                                       
                                         <td>{{ $profile->name }}</td><td>{{ $profile->email }}</td><td>{{ $college->name }}</td><td>{{ $course->name }}</td>
-                                        <td>                                            
-                                            <a href="{{ url('/profile/' . $profile->id . '/edit') }}" title="Edit Profile"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-
-                                            <form method="POST" action="{{ url('/profile' . '/' . $profile->id) }}" accept-charset="UTF-8" style="display:inline">
+                                        <td>                                                                                       
+                                            <form method="POST" action="{{ url('/profile' . '/' . $course->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-danger btn-xs" title="Delete Profile" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>

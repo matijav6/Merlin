@@ -7,7 +7,7 @@
 
             <div class="col-md-9">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Create New AdministerUser</div>
+                    <div class="panel-heading">Create New User</div>
                     <div class="panel-body">
                         <a href="{{ url('/admin/administer-users') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
@@ -24,7 +24,7 @@
                         <form method="POST" action="{{ url('/admin/administer-users') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
-                            @include ('admin.administer-users.form')
+                            @include ('admin.administer-users.form', ['disable' =>'false'])
 
                         </form>
 
