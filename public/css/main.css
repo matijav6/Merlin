@@ -9,3 +9,6 @@ body{
     border: 0px solid;
     box-shadow: inset 0px -3px 8px 0px #888888;
 }
+.main-menu{
+    font-size: 19px;
+}

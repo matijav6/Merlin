@@ -44,15 +44,26 @@
                 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav col-md-4">
                         &nbsp;
                     </ul>
                     
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        <a href="{{ url('/news') }}" >                                           
-                                            Users
-                        </a>  
+                    <ul class="nav navbar-nav main-menu col-md-4">
+                        @if(Auth::user())
+                        <li> <a href="{{ url('/news') }}" >                                           
+                                News
+                                </a>
+                            </li>
+                            <li><a href="{{ url('/instructions') }}" >                                           
+                                Instructions
+                                </a> 
+                            </li>
+                            <li><a href="{{ url('/materials') }}" >                                           
+                                Materials
+                                </a> 
+                            </li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
