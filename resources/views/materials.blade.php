@@ -24,18 +24,16 @@
                                                     @if($post->course == $course->id)   
 
                                                         <article class="post"> 
-                                                            <p>
-                                                                <h3>{{ $course->name }} </h3>
-                                                                {{ $post->content }}
-                                                            </p>
+                                                        <h3>{{ $course->name }} </h3>
+                                                        <p> {{ $post->content }}</p>
 
                                                             <div class="info">
                                                                 Posted by {{ $user->name }} on {{ Carbon\Carbon::parse($post->created_at)->format('d.m.Y @ h:i') }}
                                                             </div>
 
                                                             <div class="interaction">
-                                                                <a href="#" class="like btn btn-outline-success">Like</a>
-                                                                <a href="#" class="dislike btn btn-outline-danger">Dislike</a>                                       
+                                                                <a href="#" class="like btn btn-outline-success">Usefull</a>
+                                                                <a href="#" class="dislike btn btn-outline-danger">Not usefull</a>                                       
                                                             </div>
                                                         </article>
 
