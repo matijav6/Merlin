@@ -30,7 +30,7 @@
                                                             </p>
 
                                                             <div class="info">
-                                                                Posted by {{ $user->name }} on {{ $post->created_at->format('d.m.Y @ h:m') }}
+                                                                Posted by {{ $user->name }} on {{ Carbon\Carbon::parse($post->created_at)->format('d.m.Y @ h:i') }}
                                                             </div>
 
                                                             <div class="interaction">
