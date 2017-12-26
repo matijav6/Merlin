@@ -12,7 +12,7 @@ class CreateInstructionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('instructions', function (Blueprint $table) {
+        Schema::create('myInstructions', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->integer('course');
@@ -28,6 +28,6 @@ class CreateInstructionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('instructions');
+        Schema::drop('myInstructions');
     }
 }

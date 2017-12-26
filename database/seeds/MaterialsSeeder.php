@@ -12,7 +12,7 @@ class MaterialsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('materials')->insert([
+        DB::table('myMaterials')->insert([
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'course'  => '3',
             'content' => 'Lorem Ipsum je jednostavno probni tekst 

@@ -7,14 +7,14 @@
         <div class="panel-body">
             <ul class="nav" role="tablist">
                 <li role="presentation">
-                    <a href="{{ url('/news') }}">
-                       My news
+                    <a href="{{ url('/myNews') }}">
+                       My News
                     </a>
-                    <a href="{{ url('/instructions') }}">
-                        My instructions
+                    <a href="{{ url('/myInstructions') }}">
+                        My Instructions
                     </a>
-                    <a href="{{ url('/materials') }}">
-                        My materials
+                    <a href="{{ url('/myMaterials') }}">
+                        My Materials
                     </a>
                 </li>
             </ul>

@@ -12,7 +12,7 @@ class NewsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('news')->insert([
+        DB::table('myNews')->insert([
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'course'  => '2',
             'content' => 'Lorem Ipsum je jednostavno probni tekst 

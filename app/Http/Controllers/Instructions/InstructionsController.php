@@ -23,15 +23,15 @@ class InstructionsController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $instructions = Instruction::where('course', 'LIKE', "%$keyword%")
+            $myInstructions = Instruction::where('course', 'LIKE', "%$keyword%")
                 ->orWhere('content', 'LIKE', "%$keyword%")
                 ->paginate($perPage);
         } else {
-            $instructions = Instruction::where('user_id','=',Auth::user()->id)->paginate();
+            $myInstructions = Instruction::where('user_id','=',Auth::user()->id)->paginate();
         }
 
         $courses = Course::orderBy('id', 'desc')->get();
-        return view('instructions.instructions.index', compact('instructions', 'courses'));
+        return view('myInstructions.myInstructions.index', compact('myInstructions', 'courses'));
     }
 
     /**
@@ -42,7 +42,7 @@ class InstructionsController extends Controller
     public function create()
     {
         $courses = Course::orderBy('id', 'desc')->get();
-        return view('instructions.instructions.create', compact('courses'));
+        return view('myInstructions.myInstructions.create', compact('courses'));
     }
 
     /**
@@ -59,7 +59,7 @@ class InstructionsController extends Controller
         
         Instruction::create($requestData);
 
-        return redirect('instructions')->with('flash_message', 'Instruction added!');
+        return redirect('myInstructions')->with('flash_message', 'Instruction added!');
     }
 
     /**
@@ -73,7 +73,7 @@ class InstructionsController extends Controller
     {
         $instruction = Instruction::findOrFail($id);
 
-        return view('instructions.instructions.show', compact('instruction'));
+        return view('myInstructions.myInstructions.show', compact('instruction'));
     }
 
     /**
@@ -88,7 +88,7 @@ class InstructionsController extends Controller
         $instruction = Instruction::findOrFail($id);
         $courses = Course::orderBy('id', 'desc')->get();
 
-        return view('instructions.instructions.edit', compact('instruction','courses'));
+        return view('myInstructions.myInstructions.edit', compact('instruction','courses'));
     }
 
     /**
@@ -107,7 +107,7 @@ class InstructionsController extends Controller
         $instruction = Instruction::findOrFail($id);
         $instruction->update($requestData);
 
-        return redirect('instructions')->with('flash_message', 'Instruction updated!');
+        return redirect('myInstructions')->with('flash_message', 'Instruction updated!');
     }
 
     /**
@@ -121,6 +121,6 @@ class InstructionsController extends Controller
     {
         Instruction::destroy($id);
 
-        return redirect('instructions')->with('flash_message', 'Instruction deleted!');
+        return redirect('myInstructions')->with('flash_message', 'Instruction deleted!');
     }
 }

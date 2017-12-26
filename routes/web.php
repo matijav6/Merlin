@@ -17,11 +17,9 @@ Route::get('/', function () {
 
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/news', 'HomeController@showNews')->name('news');
     
-Route::resource('/instructions', 'Instructions\\InstructionsController');
-Route::resource('/news', 'News\\NewsController');
-Route::resource('/materials', 'Materials\\MaterialsController');
+
 //Auth::routes();
 
 // Authentication Routes...
@@ -40,12 +38,23 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 //*********************************************** */
 
-Route::group(['middleware' => ['auth']], function () {
-    Route::resource('profile', 'ProfileController');
+Route::group(['middleware' => ['admin']], function () {
 
     Route::resource('admin/users', 'Admin\\AdministerUsersController');
     Route::resource('admin/colleges', 'Admin\\AdministerCollegesController');
     Route::resource('admin/courses', 'Admin\\AdministerCoursesController');
+
+});
+
+Route::group(['middleware' => ['auth']], function () {
+
+    Route::resource('profile', 'ProfileController');
+
+
+
+    Route::resource('/myInstructions', 'Instructions\\InstructionsController');
+    Route::resource('/myNews', 'News\\NewsController');
+    Route::resource('/myMaterials', 'Materials\\MaterialsController');
 
 
 });

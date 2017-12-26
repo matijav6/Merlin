@@ -11,7 +11,7 @@ class Material extends Model
      *
      * @var string
      */
-    protected $table = 'materials';
+    protected $table = 'myMaterials';
 
     /**
     * The database primary key value.

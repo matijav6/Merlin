@@ -51,15 +51,15 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav main-menu col-md-5">
                         @if(Auth::user())
-                        <li> <a href="{{ url('/news') }}" >                                           
+                        <li> <a href="{{ url('/myNews') }}" >                                           
                                 News
                                 </a>
                             </li>
-                            <li><a href="{{ url('/instructions') }}" >                                           
+                            <li><a href="{{ url('/myInstructions') }}" >                                           
                                 Instructions
                                 </a> 
                             </li>
-                            <li><a href="{{ url('/materials') }}" >                                           
+                            <li><a href="{{ url('/myMaterials') }}" >                                           
                                 Materials
                                 </a> 
                             </li>
@@ -111,9 +111,9 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ url('/profile') }}">My profile</a></li>
-                                <li><a href="{{ url('/instructions') }}">My Instructions</a></li>
-                        <li><a href="{{ url('/news') }}">My News</a></li>
-                        <li><a href="{{ url('/materials') }}">My Materials</a></li>
+                                <li><a href="{{ url('/myNews') }}">My News</a></li>
+                                <li><a href="{{ url('/myInstructions') }}">My Instructions</a></li>                        
+                                <li><a href="{{ url('/myMaterials') }}">My Materials</a></li>
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();

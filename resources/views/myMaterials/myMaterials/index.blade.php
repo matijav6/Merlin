@@ -9,7 +9,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Materials</div>
                     <div class="panel-body">
-                        <a href="{{ url('/materials/create') }}" class="btn btn-success btn-sm" title="Add New Material">
+                        <a href="{{ url('/myMaterials/create') }}" class="btn btn-success btn-sm" title="Add New Material">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>                       
 
@@ -23,19 +23,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($materials as $item)
+                                @foreach($myMaterials as $item)
                                     <tr>
                                         <td>{{ $loop->iteration or $item->id }}</td>
                                         @foreach($courses as $course)
                                         @if($item->course == $course->id)
                                         <td>{{ $course->name }}</td><td>{{ $item->content }}</td>                                                                                
                                         <td>                                            
-                                            <a href="{{ url('/materials/' . $item->id . '/edit') }}" title="Edit materials"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ url('/myMaterials/' . $item->id . '/edit') }}" title="Edit myMaterials"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
-                                            <form method="POST" action="{{ url('/materials' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                            <form method="POST" action="{{ url('/myMaterials' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-xs" title="Delete materials" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                                <button type="submit" class="btn btn-danger btn-xs" title="Delete myMaterials" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -44,7 +44,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="pagination-wrapper"> {!! $materials->appends(['search' => Request::get('search')])->render() !!} </div>
+                            <div class="pagination-wrapper"> {!! $myMaterials->appends(['search' => Request::get('search')])->render() !!} </div>
                         </div>
 
                     </div>

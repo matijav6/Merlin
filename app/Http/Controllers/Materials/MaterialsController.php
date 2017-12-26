@@ -23,14 +23,14 @@ class MaterialsController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $materials = Material::where('course', 'LIKE', "%$keyword%")
+            $myMaterials = Material::where('course', 'LIKE', "%$keyword%")
                 ->orWhere('content', 'LIKE', "%$keyword%")
                 ->paginate($perPage);
         } else {
-            $materials = Material::where('user_id','=',Auth::user()->id)->paginate();
+            $myMaterials = Material::where('user_id','=',Auth::user()->id)->paginate();
         }
         $courses = Course::orderBy('id', 'desc')->get();     
-        return view('materials.materials.index', compact('materials','courses'));
+        return view('myMaterials.myMaterials.index', compact('myMaterials','courses'));
     }
 
     /**
@@ -41,7 +41,7 @@ class MaterialsController extends Controller
     public function create()
     {
         $courses = Course::orderBy('id', 'desc')->get();   
-        return view('materials.materials.create', compact('courses'));
+        return view('myMaterials.myMaterials.create', compact('courses'));
     }
 
     /**
@@ -58,7 +58,7 @@ class MaterialsController extends Controller
         
         Material::create($requestData);
 
-        return redirect('/materials')->with('flash_message', 'Material added!');
+        return redirect('/myMaterials')->with('flash_message', 'Material added!');
     }
 
     /**
@@ -72,7 +72,7 @@ class MaterialsController extends Controller
     {
         $material = Material::findOrFail($id);
 
-        return view('materials.materials.show', compact('material'));
+        return view('myMaterials.myMaterials.show', compact('material'));
     }
 
     /**
@@ -86,7 +86,7 @@ class MaterialsController extends Controller
     {
         $material = Material::findOrFail($id);
         $courses = Course::orderBy('id', 'desc')->get();   
-        return view('materials.materials.edit', compact('material','courses'));
+        return view('myMaterials.myMaterials.edit', compact('material','courses'));
     }
 
     /**
@@ -105,7 +105,7 @@ class MaterialsController extends Controller
         $material = Material::findOrFail($id);
         $material->update($requestData);
 
-        return redirect('/materials')->with('flash_message', 'Material updated!');
+        return redirect('/myMaterials')->with('flash_message', 'Material updated!');
     }
 
     /**
@@ -119,6 +119,6 @@ class MaterialsController extends Controller
     {
         Material::destroy($id);
 
-        return redirect('/materials')->with('flash_message', 'Material deleted!');
+        return redirect('/myMaterials')->with('flash_message', 'Material deleted!');
     }
 }

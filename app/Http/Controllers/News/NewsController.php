@@ -24,16 +24,16 @@ class NewsController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $news = News::where('course', 'LIKE', "%$keyword%")
+            $myNews = News::where('course', 'LIKE', "%$keyword%")
                 ->orWhere('content', 'LIKE', "%$keyword%")
                 ->paginate($perPage);
         } else {
-            $news = News::where('user_id','=',Auth::user()->id)->paginate();
+            $myNews = News::where('user_id','=',Auth::user()->id)->paginate();
         }
 
         $courses = Course::orderBy('id', 'desc')->get();     
 
-        return view('news.news.index', compact('news','courses'));
+        return view('myNews.myNews.index', compact('myNews','courses'));
     }
 
     /**
@@ -45,7 +45,7 @@ class NewsController extends Controller
     {
         $courses = Course::orderBy('id', 'desc')->get();
         
-        return view('news.news.create', compact('courses'));
+        return view('myNews.myNews.create', compact('courses'));
     }
 
     /**
@@ -62,7 +62,7 @@ class NewsController extends Controller
         
         News::create($requestData);
 
-        return redirect('/news')->with('flash_message', 'News added!');
+        return redirect('/myNews')->with('flash_message', 'News added!');
     }
 
     /**
@@ -74,9 +74,9 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        $news = News::findOrFail($id);
+        $myNews = News::findOrFail($id);
 
-        return view('news.news.show', compact('news'));
+        return view('myNews.myNews.show', compact('myNews'));
     }
 
     /**
@@ -88,10 +88,10 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        $news = News::findOrFail($id);
+        $myNews = News::findOrFail($id);
         $courses = Course::orderBy('id', 'desc')->get();
                 
-        return view('news.news.edit', compact('news','courses'));
+        return view('myNews.myNews.edit', compact('myNews','courses'));
     }
 
     /**
@@ -107,10 +107,10 @@ class NewsController extends Controller
         
         $requestData = $request->all();
         
-        $news = News::findOrFail($id);
-        $news->update($requestData);
+        $myNews = News::findOrFail($id);
+        $myNews->update($requestData);
 
-        return redirect('/news')->with('flash_message', 'News updated!');
+        return redirect('/myNews')->with('flash_message', 'News updated!');
     }
 
     /**
@@ -124,6 +124,6 @@ class NewsController extends Controller
     {
         News::destroy($id);
 
-        return redirect('/news')->with('flash_message', 'News deleted!');
+        return redirect('/myNews')->with('flash_message', 'News deleted!');
     }
 }

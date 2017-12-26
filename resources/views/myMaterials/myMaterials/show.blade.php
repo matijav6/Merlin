@@ -10,10 +10,10 @@
                     <div class="panel-heading">Material {{ $material->id }}</div>
                     <div class="panel-body">
 
-                        <a href="{{ url('/materials') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/materials/' . $material->id . '/edit') }}" title="Edit Material"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                        <a href="{{ url('/myMaterials') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/myMaterials/' . $material->id . '/edit') }}" title="Edit Material"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
-                        <form method="POST" action="{{ url('materials' . '/' . $material->id) }}" accept-charset="UTF-8" style="display:inline">
+                        <form method="POST" action="{{ url('myMaterials' . '/' . $material->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
                             <button type="submit" class="btn btn-danger btn-xs" title="Delete Material" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>

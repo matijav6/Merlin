@@ -9,7 +9,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">News</div>
                     <div class="panel-body">
-                        <a href="{{ url('/news/create') }}" class="btn btn-success btn-sm" title="Add New News">
+                        <a href="{{ url('/myNews/create') }}" class="btn btn-success btn-sm" title="Add New News">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
 
@@ -25,16 +25,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($news as $item)
+                                @foreach($myNews as $item)
                                     <tr>
                                         <td>{{ $loop->iteration or $item->id }}</td>
                                         @foreach($courses as $course)
                                         @if($item->course == $course->id)
                                         <td>{{ $course->name }}</td><td>{{ $item->content }}</td>                                                                                
                                         <td>                                            
-                                            <a href="{{ url('/news/' . $item->id . '/edit') }}" title="Edit News"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ url('/myNews/' . $item->id . '/edit') }}" title="Edit News"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
-                                            <form method="POST" action="{{ url('/news' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                            <form method="POST" action="{{ url('/myNews' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-danger btn-xs" title="Delete News" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
@@ -46,7 +46,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="pagination-wrapper"> {!! $news->appends(['search' => Request::get('search')])->render() !!} </div>
+                            <div class="pagination-wrapper"> {!! $myNews->appends(['search' => Request::get('search')])->render() !!} </div>
                         </div>
 
                     </div>

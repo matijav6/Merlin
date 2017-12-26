@@ -12,7 +12,7 @@ class InstructionsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('instructions')->insert([
+        DB::table('myInstructions')->insert([
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'course'  => '1',
             'content' => 'Lorem Ipsum je jednostavno probni tekst 
