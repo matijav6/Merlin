@@ -45,8 +45,13 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::get('/news', 'HomeController@showNews')->name('news');
+    Route::post('/news', 'HomeController@likeNews')->name('news.like');
+    
     Route::get('/instructions', 'HomeController@showInstructions')->name('instructions');
+    Route::post('/instructions', 'HomeController@likeInstruction')->name('instruction.like');
+
     Route::get('/materials', 'HomeController@showMaterials')->name('materials');
+    Route::post('/materials', 'HomeController@likeMaterial')->name('material.like');
  
     Route::resource('/myInstructions', 'Instructions\\MyInstructionsController');
     Route::resource('/myNews', 'News\\MyNewsController');
