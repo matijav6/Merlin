@@ -59,3 +59,7 @@ body{
     -o-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
 }
+.btn-default{
+    font-size: 1.95rem;
+    border-radius: 0;
+}
