@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Instructions;
+namespace App\Http\Controllers\Materials;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Material;
 use App\Course;
-use App\Instruction;
 use Auth;
 use Illuminate\Http\Request;
 
-class InstructionsController extends Controller
+class MyMaterialsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,15 +23,14 @@ class InstructionsController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $myInstructions = Instruction::where('course', 'LIKE', "%$keyword%")
+            $myMaterials = Material::where('course', 'LIKE', "%$keyword%")
                 ->orWhere('content', 'LIKE', "%$keyword%")
                 ->paginate($perPage);
         } else {
-            $myInstructions = Instruction::where('user_id','=',Auth::user()->id)->paginate();
+            $myMaterials = Material::where('user_id','=',Auth::user()->id)->paginate();
         }
-
-        $courses = Course::orderBy('id', 'desc')->get();
-        return view('myInstructions.myInstructions.index', compact('myInstructions', 'courses'));
+        $courses = Course::orderBy('id', 'desc')->get();     
+        return view('myMaterials.myMaterials.index', compact('myMaterials','courses'));
     }
 
     /**
@@ -41,8 +40,8 @@ class InstructionsController extends Controller
      */
     public function create()
     {
-        $courses = Course::orderBy('id', 'desc')->get();
-        return view('myInstructions.myInstructions.create', compact('courses'));
+        $courses = Course::orderBy('id', 'desc')->get();   
+        return view('myMaterials.myMaterials.create', compact('courses'));
     }
 
     /**
@@ -57,9 +56,9 @@ class InstructionsController extends Controller
         
         $requestData = $request->all();
         
-        Instruction::create($requestData);
+        Material::create($requestData);
 
-        return redirect('myInstructions')->with('flash_message', 'Instruction added!');
+        return redirect('/myMaterials')->with('flash_message', 'Material added!');
     }
 
     /**
@@ -71,9 +70,9 @@ class InstructionsController extends Controller
      */
     public function show($id)
     {
-        $instruction = Instruction::findOrFail($id);
+        $material = Material::findOrFail($id);
 
-        return view('myInstructions.myInstructions.show', compact('instruction'));
+        return view('myMaterials.myMaterials.show', compact('material'));
     }
 
     /**
@@ -85,10 +84,9 @@ class InstructionsController extends Controller
      */
     public function edit($id)
     {
-        $instruction = Instruction::findOrFail($id);
-        $courses = Course::orderBy('id', 'desc')->get();
-
-        return view('myInstructions.myInstructions.edit', compact('instruction','courses'));
+        $material = Material::findOrFail($id);
+        $courses = Course::orderBy('id', 'desc')->get();   
+        return view('myMaterials.myMaterials.edit', compact('material','courses'));
     }
 
     /**
@@ -104,10 +102,10 @@ class InstructionsController extends Controller
         
         $requestData = $request->all();
         
-        $instruction = Instruction::findOrFail($id);
-        $instruction->update($requestData);
+        $material = Material::findOrFail($id);
+        $material->update($requestData);
 
-        return redirect('myInstructions')->with('flash_message', 'Instruction updated!');
+        return redirect('/myMaterials')->with('flash_message', 'Material updated!');
     }
 
     /**
@@ -119,8 +117,8 @@ class InstructionsController extends Controller
      */
     public function destroy($id)
     {
-        Instruction::destroy($id);
+        Material::destroy($id);
 
-        return redirect('myInstructions')->with('flash_message', 'Instruction deleted!');
+        return redirect('/myMaterials')->with('flash_message', 'Material deleted!');
     }
 }

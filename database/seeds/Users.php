@@ -23,5 +23,17 @@ class Users extends Seeder
             'email' => 'ana.florijanovic@gmail.com',
             'password' => Hash::make('pass'),        
         ]);
+
+        DB::table('users')->insert([
+            'name' => 'Toni Toplek',
+            'email' => 'toni.toplek@gmail.com',
+            'password' => Hash::make('pass'),        
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Dora Trogrlić',
+            'email' => 'dora.trogrlic@gmail.com',
+            'password' => Hash::make('pass'),        
+        ]);
     }
 }

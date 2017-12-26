@@ -16,13 +16,13 @@ class CoursesSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),        
                 'name' => 'Baze podataka',                
                 'aka' => 'BP',                
-                'fax_id' => '3', 
+                'fax_id' => '1', 
         ]);
         DB::table('courses')->insert([
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),        
                 'name' => 'Projektiranje informacijskih sustava',                
                 'aka' => 'PIS',                
-                'fax_id' => '3', 
+                'fax_id' => '2', 
         ]);
         DB::table('courses')->insert([
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),        

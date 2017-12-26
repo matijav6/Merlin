@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\News;
+namespace App\Http\Controllers\Instructions;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use DB;
 
-use App\News;
 use App\Course;
+use App\Instruction;
 use Auth;
 use Illuminate\Http\Request;
 
-class NewsController extends Controller
+class MyInstructionsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,16 +23,15 @@ class NewsController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $myNews = News::where('course', 'LIKE', "%$keyword%")
+            $myInstructions = Instruction::where('course', 'LIKE', "%$keyword%")
                 ->orWhere('content', 'LIKE', "%$keyword%")
                 ->paginate($perPage);
         } else {
-            $myNews = News::where('user_id','=',Auth::user()->id)->paginate();
+            $myInstructions = Instruction::where('user_id','=',Auth::user()->id)->paginate();
         }
 
-        $courses = Course::orderBy('id', 'desc')->get();     
-
-        return view('myNews.myNews.index', compact('myNews','courses'));
+        $courses = Course::orderBy('id', 'desc')->get();
+        return view('myInstructions.myInstructions.index', compact('myInstructions', 'courses'));
     }
 
     /**
@@ -44,8 +42,7 @@ class NewsController extends Controller
     public function create()
     {
         $courses = Course::orderBy('id', 'desc')->get();
-        
-        return view('myNews.myNews.create', compact('courses'));
+        return view('myInstructions.myInstructions.create', compact('courses'));
     }
 
     /**
@@ -60,9 +57,9 @@ class NewsController extends Controller
         
         $requestData = $request->all();
         
-        News::create($requestData);
+        Instruction::create($requestData);
 
-        return redirect('/myNews')->with('flash_message', 'News added!');
+        return redirect('myInstructions')->with('flash_message', 'Instruction added!');
     }
 
     /**
@@ -74,9 +71,9 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        $myNews = News::findOrFail($id);
+        $instruction = Instruction::findOrFail($id);
 
-        return view('myNews.myNews.show', compact('myNews'));
+        return view('myInstructions.myInstructions.show', compact('instruction'));
     }
 
     /**
@@ -88,10 +85,10 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        $myNews = News::findOrFail($id);
+        $instruction = Instruction::findOrFail($id);
         $courses = Course::orderBy('id', 'desc')->get();
-                
-        return view('myNews.myNews.edit', compact('myNews','courses'));
+
+        return view('myInstructions.myInstructions.edit', compact('instruction','courses'));
     }
 
     /**
@@ -107,10 +104,10 @@ class NewsController extends Controller
         
         $requestData = $request->all();
         
-        $myNews = News::findOrFail($id);
-        $myNews->update($requestData);
+        $instruction = Instruction::findOrFail($id);
+        $instruction->update($requestData);
 
-        return redirect('/myNews')->with('flash_message', 'News updated!');
+        return redirect('myInstructions')->with('flash_message', 'Instruction updated!');
     }
 
     /**
@@ -122,8 +119,8 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        News::destroy($id);
+        Instruction::destroy($id);
 
-        return redirect('/myNews')->with('flash_message', 'News deleted!');
+        return redirect('myInstructions')->with('flash_message', 'Instruction deleted!');
     }
 }

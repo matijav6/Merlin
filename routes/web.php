@@ -15,13 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
-Route::get('/news', 'HomeController@showNews')->name('news');
-    
-
-//Auth::routes();
-
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
@@ -51,10 +44,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('profile', 'ProfileController');
 
 
-
-    Route::resource('/myInstructions', 'Instructions\\InstructionsController');
-    Route::resource('/myNews', 'News\\NewsController');
-    Route::resource('/myMaterials', 'Materials\\MaterialsController');
+    Route::get('/news', 'HomeController@showNews')->name('news');
+    Route::get('/instructions', 'HomeController@showInstructions')->name('instructions');
+    Route::get('/materials', 'HomeController@showMaterials')->name('materials');
+ 
+    Route::resource('/myInstructions', 'Instructions\\MyInstructionsController');
+    Route::resource('/myNews', 'News\\MyNewsController');
+    Route::resource('/myMaterials', 'Materials\\MyMaterialsController');
 
 
 });

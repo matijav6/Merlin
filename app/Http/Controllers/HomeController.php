@@ -32,16 +32,34 @@ class HomeController extends Controller
      */
     public function showNews()
     {
-        return view('news');
+        $user = Auth::user();
+        $users = User::orderBy('name','asc')->get();
+        $UCC = UsersCollegesAndCourses::where('user_id','=',$user->id)->get();
+        $courses = Course::orderBy('name','asc')->get();
+        $news = News::orderBy('id','asc')->get();
+
+        return view('news',compact('UCC','courses','news','users'));
     }
 
     public function showInstructions()
     {
-        return view('instructions');
+        $user = Auth::user();
+        $users = User::orderBy('name','asc')->get();
+        $UCC = UsersCollegesAndCourses::where('user_id','=',$user->id)->get();
+        $courses = Course::orderBy('name','asc')->get();
+        $instructions = Instruction::orderBy('id','asc')->get();
+
+        return view('instructions',compact('UCC','courses','instructions','users'));
     }
 
     public function showMaterials()
     {
-        return view('materials');
+        $user = Auth::user();
+        $users = User::orderBy('name','asc')->get();
+        $UCC = UsersCollegesAndCourses::where('user_id','=',$user->id)->get();
+        $courses = Course::orderBy('name','asc')->get();
+        $materials = Material::orderBy('id','asc')->get();
+
+        return view('materials',compact('UCC','courses','materials','users'));
     }
 }

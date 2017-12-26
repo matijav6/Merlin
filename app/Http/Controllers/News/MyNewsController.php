@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Materials;
+namespace App\Http\Controllers\News;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use DB;
 
-use App\Material;
+use App\News;
 use App\Course;
 use Auth;
 use Illuminate\Http\Request;
 
-class MaterialsController extends Controller
+class MyNewsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,14 +24,16 @@ class MaterialsController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $myMaterials = Material::where('course', 'LIKE', "%$keyword%")
+            $myNews = News::where('course', 'LIKE', "%$keyword%")
                 ->orWhere('content', 'LIKE', "%$keyword%")
                 ->paginate($perPage);
         } else {
-            $myMaterials = Material::where('user_id','=',Auth::user()->id)->paginate();
+            $myNews = News::where('user_id','=',Auth::user()->id)->paginate();
         }
+
         $courses = Course::orderBy('id', 'desc')->get();     
-        return view('myMaterials.myMaterials.index', compact('myMaterials','courses'));
+
+        return view('myNews.myNews.index', compact('myNews','courses'));
     }
 
     /**
@@ -40,8 +43,9 @@ class MaterialsController extends Controller
      */
     public function create()
     {
-        $courses = Course::orderBy('id', 'desc')->get();   
-        return view('myMaterials.myMaterials.create', compact('courses'));
+        $courses = Course::orderBy('id', 'desc')->get();
+        
+        return view('myNews.myNews.create', compact('courses'));
     }
 
     /**
@@ -56,9 +60,9 @@ class MaterialsController extends Controller
         
         $requestData = $request->all();
         
-        Material::create($requestData);
+        News::create($requestData);
 
-        return redirect('/myMaterials')->with('flash_message', 'Material added!');
+        return redirect('/myNews')->with('flash_message', 'News added!');
     }
 
     /**
@@ -70,9 +74,9 @@ class MaterialsController extends Controller
      */
     public function show($id)
     {
-        $material = Material::findOrFail($id);
+        $myNews = News::findOrFail($id);
 
-        return view('myMaterials.myMaterials.show', compact('material'));
+        return view('myNews.myNews.show', compact('myNews'));
     }
 
     /**
@@ -84,9 +88,10 @@ class MaterialsController extends Controller
      */
     public function edit($id)
     {
-        $material = Material::findOrFail($id);
-        $courses = Course::orderBy('id', 'desc')->get();   
-        return view('myMaterials.myMaterials.edit', compact('material','courses'));
+        $myNews = News::findOrFail($id);
+        $courses = Course::orderBy('id', 'desc')->get();
+                
+        return view('myNews.myNews.edit', compact('myNews','courses'));
     }
 
     /**
@@ -102,10 +107,10 @@ class MaterialsController extends Controller
         
         $requestData = $request->all();
         
-        $material = Material::findOrFail($id);
-        $material->update($requestData);
+        $myNews = News::findOrFail($id);
+        $myNews->update($requestData);
 
-        return redirect('/myMaterials')->with('flash_message', 'Material updated!');
+        return redirect('/myNews')->with('flash_message', 'News updated!');
     }
 
     /**
@@ -117,8 +122,8 @@ class MaterialsController extends Controller
      */
     public function destroy($id)
     {
-        Material::destroy($id);
+        News::destroy($id);
 
-        return redirect('/myMaterials')->with('flash_message', 'Material deleted!');
+        return redirect('/myNews')->with('flash_message', 'News deleted!');
     }
 }

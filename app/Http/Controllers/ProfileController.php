@@ -132,13 +132,16 @@ class ProfileController extends Controller
     {
         $userID = Auth::user()->id;
 
-        $delete = UsersCollegesAndCourses::orderBy('id','asc')->get();
-        
+        $delete = UsersCollegesAndCourses::where('user_id','=',$userID)->get();
+
         foreach($delete as $del){
-            if($del->course_id = $id AND $del->user_id = $userID)
-                $var = $del->id;
+            if($del->course_id == $id AND $del->user_id == $userID){
+                $var = $del->id;             
+            }
+                
         }
-        UsersCollegesAndCourses::destroy($var);
-        return redirect('profile')->with('flash_message', 'Profile deleted!');
+        
+       UsersCollegesAndCourses::destroy($var);
+       return redirect('profile')->with('flash_message', 'Profile deleted!');
     }
 }

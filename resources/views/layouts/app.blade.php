@@ -51,15 +51,15 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav main-menu col-md-5">
                         @if(Auth::user())
-                        <li> <a href="{{ url('/myNews') }}" >                                           
+                        <li> <a href="{{ url('/news') }}" >                                           
                                 News
                                 </a>
                             </li>
-                            <li><a href="{{ url('/myInstructions') }}" >                                           
+                            <li><a href="{{ url('/instructions') }}" >                                           
                                 Instructions
                                 </a> 
                             </li>
-                            <li><a href="{{ url('/myMaterials') }}" >                                           
+                            <li><a href="{{ url('/materials') }}" >                                           
                                 Materials
                                 </a> 
                             </li>
