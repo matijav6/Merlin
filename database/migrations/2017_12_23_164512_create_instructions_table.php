@@ -12,12 +12,17 @@ class CreateInstructionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('myInstructions', function (Blueprint $table) {
+        Schema::create('instructions', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
-            $table->integer('course');
-            $table->text('content');
-            $table->integer('user_id');
+            $table->timestamps();            
+            $table->text('content');            
+            $table->integer('course')->unsigned();
+            $table->integer('user_id')->unsigned();
+            });
+
+            Schema::table('instructions', function (Blueprint $table) {
+                $table->foreign('course')->references('id')->on('courses')->onDelete('cascade');        
+                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');            
             });
     }
 
@@ -28,6 +33,6 @@ class CreateInstructionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('myInstructions');
+        Schema::drop('instructions');
     }
 }

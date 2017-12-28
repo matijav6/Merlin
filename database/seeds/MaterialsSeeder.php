@@ -12,7 +12,7 @@ class MaterialsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('myMaterials')->insert([
+        DB::table('materials')->insert([
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'course'  => '3',
             'content' => 'Word.docx',                

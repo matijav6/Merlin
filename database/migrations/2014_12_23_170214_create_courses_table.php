@@ -18,7 +18,8 @@ class CreateCoursesTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('aka');
-            $table->integer('fax_id');
+            $table->integer('fax_id')->unsigned();
+            $table->foreign('fax_id')->references('id')->on('colleges');
         });
     }
 

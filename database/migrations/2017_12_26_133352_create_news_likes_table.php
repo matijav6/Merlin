@@ -14,9 +14,11 @@ class CreateNewsLikesTable extends Migration
     public function up()
     {
         Schema::create('news_likes', function (Blueprint $table) {
-            $table->increments('id');            
-            $table->integer('user_id');
-            $table->integer('news_id');    
+            $table->increments('id');  
+            $table->integer('user_id')->unsigned();
+            $table->integer('news_id')->unsigned();          
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('news_id')->references('id')->on('news');   
             $table->integer('usefull')->nullable()->default('0'); 
             $table->integer('not_usefull')->nullable()->default('0');
             $table->timestamps();    

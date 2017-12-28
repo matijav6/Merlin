@@ -12,12 +12,15 @@ class CreateMaterialsTable extends Migration
      */
     public function up()
     {
-        Schema::create('myMaterials', function (Blueprint $table) {
+        Schema::create('materials', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
-            $table->integer('course');
+            $table->timestamps();    
             $table->text('content');
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned();
+            $table->integer('course')->unsigned();
+
+            $table->foreign('course')->references('id')->on('courses')->onDelete('cascade');;
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
             });
     }
 
@@ -28,6 +31,6 @@ class CreateMaterialsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('myMaterials');
+        Schema::drop('materials');
     }
 }

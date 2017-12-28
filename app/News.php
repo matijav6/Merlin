@@ -11,7 +11,7 @@ class News extends Model
      *
      * @var string
      */
-    protected $table = 'myNews';
+    protected $table = 'news';
 
     /**
     * The database primary key value.

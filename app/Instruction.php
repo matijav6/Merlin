@@ -11,7 +11,7 @@ class Instruction extends Model
      *
      * @var string
      */
-    protected $table = 'myInstructions';
+    protected $table = 'instructions';
 
     /**
     * The database primary key value.

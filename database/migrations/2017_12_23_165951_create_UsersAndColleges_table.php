@@ -16,9 +16,12 @@ class CreateUsersAndCollegesTable extends Migration
         Schema::create('UsersCollegesAndCourses', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('user_id');
-            $table->string('fax_id');
-            $table->string('course_id');
+            $table->integer('user_id')->unsigned();
+            $table->integer('fax_id')->unsigned();
+            $table->integer('course_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
+            $table->foreign('fax_id')->references('id')->on('colleges')->onDelete('cascade');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');;
         });
     }
 

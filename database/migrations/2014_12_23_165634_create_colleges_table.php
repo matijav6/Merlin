@@ -18,7 +18,8 @@ class CreateCollegesTable extends Migration
             $table->timestamps();
             $table->text('name');
             $table->text('aka');
-            $table->integer('county_id');
+            $table->integer('county_id')->unsigned();        
+            $table->foreign('county_id')->references('id')->on('countys');
         });
     }
 
